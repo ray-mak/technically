@@ -1,13 +1,12 @@
-# Authorization Starter Code
+# Technically
 
-This is starter code for authorization and authentication using Next.js. This supports user sign-in and sign-up using email and password. It also supports OAuth sign-in using Google, GitHub, and Discord. It also supports password reset and email verification.
-
-Included is a simple UI for user sign-in and sign-up. It also includes a simple UI for password reset and email verification.
+This is a web app for real-world coding challenges (with a focus on full-stack development). Coding challenges will be focus on React, Next.js, Node.js, and PostgreSQL.
 
 ## TODO
 
-- Style the email verified and expired token pages.
-- Implement rate limiting for password reset and email verification.
+- Integrate Stripe for payments
+- Create user and admin dashboards
+- Create home page, and challenge list page
 
 ## NOTES
 
