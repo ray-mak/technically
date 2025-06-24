@@ -1,35 +1,24 @@
 "use client"
-import Link from "next/link"
 import React from "react"
 import Modal from "./Modal"
+import CheckoutModal from "./CheckoutModal"
 
-export const plans = [
-  {
-    link:
-      process.env.NODE_ENV === "development"
-        ? "https://buy.stripe.com/test_aFafZj5DjaDGa4a2Ct7AI01"
-        : "",
-    priceId:
-      process.env.NODE_ENV === "development" ? "prod_SXzAEyO9OlHSnV" : "",
-    name: "Premium Plan",
-    price: 7.99,
-    duration: "monthly",
-  },
-  {
-    link:
-      process.env.NODE_ENV === "development"
-        ? "https://buy.stripe.com/test_aFa3cx6Hn4fifougtj7AI02"
-        : "",
-    priceId:
-      process.env.NODE_ENV === "development" ? "prod_SXzCmYKo5yVQxw" : "",
-    name: "Pro Plan",
-    price: 24.99,
-    duration: "monthly",
-  },
-]
-const PricingComponent = ({ email }: { email: string | null | undefined }) => {
+type PricingComponentProps = {
+  email: string | null | undefined
+  product: string
+  clientSecret: string
+  plan: string
+}
+
+const PricingComponent = ({
+  email,
+  product,
+  clientSecret,
+  plan,
+}: PricingComponentProps) => {
   const [userModal, setUserModal] = React.useState(false)
   const [emailModal, setEmailModal] = React.useState(false)
+  const [checkoutModal, setCheckoutModal] = React.useState(false)
 
   function handlePremiumUpdgrade() {
     if (!email) {
@@ -37,7 +26,7 @@ const PricingComponent = ({ email }: { email: string | null | undefined }) => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setEmailModal(true)
     } else {
-      window.location.href = plans[0].link + `?prefilled_email=` + email
+      setCheckoutModal(true)
     }
   }
 
@@ -73,6 +62,14 @@ const PricingComponent = ({ email }: { email: string | null | undefined }) => {
           description="You need to have a valid email in to do that!"
           link="/dashboard"
           linkText="Edit Email"
+        />
+      )}
+      {checkoutModal && (
+        <CheckoutModal
+          closeModal={() => setCheckoutModal(false)}
+          clientSecret={clientSecret}
+          product={product}
+          plan={plan}
         />
       )}
     </div>

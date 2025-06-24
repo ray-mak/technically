@@ -4,9 +4,10 @@ This is a web app for real-world coding challenges (with a focus on full-stack d
 
 ## TODO
 
-- Integrate Stripe for payments
 - Create user and admin dashboards
 - Create home page, and challenge list page
+
+- Send confirmation email after purchase
 
 ## NOTES
 

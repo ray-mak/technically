@@ -63,6 +63,7 @@ function connectUserToAccount(
         data: {
           email,
           name,
+          isVerified: true,
         },
         select: {
           id: true,
