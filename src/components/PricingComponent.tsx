@@ -52,18 +52,6 @@ const PricingComponent = ({ email }: { email: string | null | undefined }) => {
           >
             Upgrade Now
           </button>
-          {/* <div className="border mt-4 bg-blue-600 text-white">
-            {email ? (
-              <Link
-                href={plans[0].link + `?prefilled_email=` + email}
-                className="px-4 "
-              >
-                Upgrade Now
-              </Link>
-            ) : (
-              <button onClick={() => setUserModal(true)}>Upgrade Now</button>
-            )}
-          </div> */}
         </div>
         <div className="border p-4">
           <p>Pro Plan</p>
