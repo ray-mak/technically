@@ -26,6 +26,7 @@ const RecordingClient = () => {
       body: formData,
     })
 
+    console.log(res)
     const data = await res.json()
     console.log("Transcript:", data.text)
   }
@@ -36,7 +37,7 @@ const RecordingClient = () => {
     console.log(blob, blob.type)
   }
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center gap-4">
       RecordingClient
       <button
         className={`${
@@ -51,6 +52,9 @@ const RecordingClient = () => {
       <audio src={mediaBlobUrl} controls />
       <button onClick={checkBlob} className="bg-blue-500 text-white">
         Check Blob
+      </button>
+      <button className="bg-blue-500 text-white" onClick={handleUpload}>
+        Upload
       </button>
     </div>
   )
