@@ -47,6 +47,7 @@ model User {
   resetToken String?
   resetTokenExpires DateTime?
   oauthAccounts OAuthAccount[]
+  interviews Interview[]
   plan      Plans @default(free)
 }
 
@@ -61,4 +62,35 @@ model OAuthAccount {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerId])
+}
+
+model Interview {
+  id        String @id @default(uuid())
+  name     String
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobTitle  String
+  jobDescription   String
+  interviewType    String
+  totalQuestions   Int
+  resume    String?
+  yearsExperience  Int?
+  preferredToolStack String?
+  companyName String?
+  difficulty String?
+  questionFormat String?
+  focusAreas String?
+  questions Question[]
+  feedback String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Question {
+  id        String @id @default(uuid())
+  question  String
+  answer    String
+  interviewId String
+  interview Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
