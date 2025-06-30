@@ -1,17 +1,15 @@
-"use client"
-import dynamic from "next/dynamic"
+import { getCurrentUser } from "@/auth/nextjs/currentUser"
 import InterviewForm from "./_components/InterviewForm"
 
-const RecordingClient = dynamic(() => import("./_components/RecordingClient"), {
-  ssr: false,
-})
-
-const InterviewPage = () => {
+const InterviewPage = async () => {
+  const user = await getCurrentUser({
+    withFullUser: true,
+    redirectIfNotFound: true,
+  })
   return (
     <div>
       Interview page
-      <InterviewForm />
-      {/* <RecordingClient /> */}
+      <InterviewForm userId={user.id} />
     </div>
   )
 }

@@ -1,7 +1,10 @@
-import { useState } from "react"
+"use client"
+import { getCurrentUser } from "@/auth/nextjs/currentUser"
+import { use, useState } from "react"
 
-export default function InterviewForm() {
+export default function InterviewForm({ userId }: { userId: string }) {
   const [formData, setFormData] = useState({
+    userId: userId,
     name: "",
     jobTitle: "",
     jobDescription: "",
@@ -26,7 +29,7 @@ export default function InterviewForm() {
       setFormData({ ...formData, [field]: e.target.value })
     }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log("Form data:", formData)
 
@@ -60,7 +63,15 @@ export default function InterviewForm() {
       yearsExperience,
       totalQuestions,
     }
-    // Send to backend or OpenAI prompt handler
+
+    const response = await fetch("/api/generate-questions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+
+    const data = await response.json()
+    console.log(data)
   }
 
   console.log(formData)
