@@ -1,6 +1,6 @@
 "use client"
-import { getCurrentUser } from "@/auth/nextjs/currentUser"
-import { use, useState } from "react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 export default function InterviewForm({ userId }: { userId: string }) {
   const [formData, setFormData] = useState({
@@ -18,6 +18,8 @@ export default function InterviewForm({ userId }: { userId: string }) {
     companyName: "",
     totalQuestions: "",
   })
+
+  const router = useRouter()
 
   const handleChange =
     (field: string) =>
@@ -71,10 +73,9 @@ export default function InterviewForm({ userId }: { userId: string }) {
     })
 
     const data = await response.json()
+    router.push(`/interview/practice?interviewId=${data.interviewId}`)
     console.log(data)
   }
-
-  console.log(formData)
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto p-4">

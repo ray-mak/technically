@@ -92,7 +92,7 @@ Respond with an array of plain-text questions in JSON format. Return only a comp
       )
     }
 
-    await db.interview.create({
+    const interview = await db.interview.create({
       data: {
         userId,
         name,
@@ -111,7 +111,26 @@ Respond with an array of plain-text questions in JSON format. Return only a comp
       },
     })
 
-    return new Response(JSON.stringify({ questions }), { status: 200 })
+    await db.question.createMany({
+      data: questions.map((question, index) => ({
+        interviewId: interview.id,
+        question: question,
+        answer: "",
+        position: index,
+      })),
+    })
+
+    if (!interview) {
+      return new Response(
+        JSON.stringify({ error: "Failed to create interview." }),
+        { status: 500 }
+      )
+    }
+
+    return new Response(
+      JSON.stringify({ interviewId: interview.id, questions }),
+      { status: 200 }
+    )
   } catch (error: any) {
     console.error("Error generating questions:", error)
     return new Response(JSON.stringify({ error: error.message }), {

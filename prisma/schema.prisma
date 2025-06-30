@@ -92,6 +92,7 @@ model Question {
   question  String
   answer    String
   interviewId String
+  position  Int
   interview Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
 }
