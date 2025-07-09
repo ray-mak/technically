@@ -1,43 +1,15 @@
-"use client"
-import dynamic from "next/dynamic"
-import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { getCurrentUser } from '@/auth/nextjs/currentUser'
+import React from 'react'
+import InterviewPracticePage from './_components/InterviewPracticeClient'
 
-const RecordingClient = dynamic(() => import("./_components/RecordingClient"), {
-  ssr: false,
-})
+const page = async () => {
+    const user = await getCurrentUser({ withFullUser: true })
+    console.log(user)
 
-const InterviewPracticePage = () => {
-  const searchParams = useSearchParams()!
-  const interviewId = searchParams.get("interviewId")
-  const [questions, setQuestions] = useState([])
-
-  if (!interviewId) {
-    return <div>Interview not found</div>
-  }
-
-  useEffect(() => {
-    if (!interviewId) return
-    const fetchQuestions = async () => {
-      try {
-        const res = await fetch(`/api/questions?interviewId=${interviewId}`)
-        const data = await res.json()
-        setQuestions(data.questions)
-        console.log(data.questions)
-      } catch (error) {
-        console.error("Error fetching questions", error)
-      }
-    }
-
-    fetchQuestions()
-  }, [interviewId])
-
+    //TODO: ensure interviewId is associated with user
   return (
-    <div>
-      Record Interview
-      <RecordingClient />
-    </div>
+    <div><InterviewPracticePage /></div>
   )
 }
 
-export default InterviewPracticePage
+export default page

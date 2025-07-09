@@ -4,6 +4,7 @@ import { IncomingForm } from "formidable"
 import fs from "fs"
 import { promisify } from "util"
 import path from "path"
+import { db } from "@/lib/db"
 
 export const config = {
   api: {
@@ -33,9 +34,10 @@ export default async function handler(
 
     const uploadedFile = files.file
     const file = Array.isArray(uploadedFile) ? uploadedFile[0] : uploadedFile
+    const questionId = Array.isArray(fields.questionId) ? fields.questionId[0] : fields.questionId
 
-    if (!file) {
-      return res.status(400).json({ error: "No file uploaded" })
+    if (!file || !questionId) {
+      return res.status(400).json({ error: "No file or questionId uploaded" })
     }
 
     try {
@@ -55,6 +57,15 @@ export default async function handler(
       })
 
       console.log(transcription)
+
+      const question = await db.question.update({
+        where: {
+          id: questionId,
+        },
+        data: {
+          answer: transcription.text,
+        },
+      })
 
       return res.status(200).json({ text: transcription.text })
     } catch (error) {
