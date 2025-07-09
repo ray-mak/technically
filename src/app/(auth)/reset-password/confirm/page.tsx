@@ -4,7 +4,15 @@ import React, { useState } from "react"
 
 const ResetPasswordPage = () => {
   const router = useRouter()
-  const token = useSearchParams().get("token")
+  const searchParams = useSearchParams()!
+
+  if (!searchParams) {
+  // maybe redirect or show error
+  return <div>Missing token</div>
+}
+  const token = searchParams.get("token")
+
+
   const [formData, setFormData] = useState({
     newPassword: "",
     confirmPassword: "",
