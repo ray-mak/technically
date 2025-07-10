@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -20,10 +20,10 @@ const HeroSection = () => {
           </p>
           <div>
             <Link
-              href="/contact"
-              className="px-16 bg-lightTeal hover:bg-teal-700 text-white md:text-lg font-bold py-2 rounded"
+              href="#membership"
+              className=" mt-8 inline-flex items-center gap-4 rounded-lg border-2 border-neutral-900 bg-light-salmon-50 px-6 py-5 uppercase bg-neutral-300 font-bold hover:bg-neutral-400"
             >
-              Get In Touch
+              <span>Review membership options </span>
             </Link>
           </div>
         </div>
@@ -47,7 +47,7 @@ const HeroSection = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

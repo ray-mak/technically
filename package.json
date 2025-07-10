@@ -29,6 +29,8 @@
     "react-dom": "^19.0.0",
     "react-media-recorder": "^1.7.1",
     "stripe": "^18.2.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwind-variants": "^1.0.0",
     "zod": "^3.25.30"
   },
   "devDependencies": {

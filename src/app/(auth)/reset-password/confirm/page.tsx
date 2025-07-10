@@ -1,38 +1,36 @@
-"use client"
-import { useRouter, useSearchParams } from "next/navigation"
-import React, { useState } from "react"
+"use client";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useState } from "react";
 
 const ResetPasswordPage = () => {
-  const router = useRouter()
-  const searchParams = useSearchParams()!
-
-  if (!searchParams) {
-  // maybe redirect or show error
-  return <div>Missing token</div>
-}
-  const token = searchParams.get("token")
-
-
+  const router = useRouter();
+  const searchParams = useSearchParams()!;
   const [formData, setFormData] = useState({
     newPassword: "",
     confirmPassword: "",
-  })
+  });
 
-  const [passwordError, setPasswordError] = useState<string | null>(null)
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+
+  if (!searchParams) {
+    // maybe redirect or show error
+    return <div>Missing token</div>;
+  }
+  const token = searchParams.get("token");
 
   const handleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => {
-      return { ...prevState, [e.target.name]: e.target.value }
-    })
-  }
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
+  };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
     if (formData.newPassword !== formData.confirmPassword) {
-      setPasswordError("Passwords do not match")
-      return
+      setPasswordError("Passwords do not match");
+      return;
     } else {
-      setPasswordError(null)
+      setPasswordError(null);
     }
 
     try {
@@ -40,23 +38,23 @@ const ResetPasswordPage = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, newPassword: formData.newPassword }),
-      })
+      });
 
-      const result = await response.json()
-      console.log(response)
-      console.log(result)
+      const result = await response.json();
+      console.log(response);
+      console.log(result);
 
       if (!response.ok) {
-        setPasswordError(result.error)
+        setPasswordError(result.error);
       }
 
-      router.push("/reset-password/success")
+      router.push("/reset-password/success");
     } catch (error) {
-      console.error("Unexpected error: ", error)
-      setPasswordError("Something went wrong")
+      console.error("Unexpected error: ", error);
+      setPasswordError("Something went wrong");
     }
   }
-  if (!token) return <div>Missing token</div>
+  if (!token) return <div>Missing token</div>;
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -98,7 +96,7 @@ const ResetPasswordPage = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default ResetPasswordPage
+export default ResetPasswordPage;

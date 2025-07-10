@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import SignUpForm from "@/components/SignUpForm"
-import React, { useState } from "react"
+import SignUpForm from "@/components/SignUpForm";
+import React from "react";
 
 const page = () => {
   return (
@@ -10,7 +10,7 @@ const page = () => {
         <SignUpForm />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -17,10 +17,31 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         lightTeal: "#5d98a6",
+        transparent: "transparent",
+        neutral: {
+          0: "hsl(0, 0%, 100%)",
+          100: "hsl(17, 41%, 97%)",
+          200: " hsl(17, 12%, 89%)",
+          700: "hsl(195, 23%, 28%)",
+          900: "hsl(194, 78%, 11%)",
+        },
+
+        "light-salmon": {
+          50: "hsl(22, 100%, 97%)",
+          100: "hsl(22, 100%, 91%)",
+          500: "hsl(22, 99%, 72%)",
+        },
+      },
+      extend: {
+        backgroundImage: {
+          gradient: "linear-gradient(90deg, #ffe2d1 0%, #fff5ef 100%)",
+          "gradient-text":
+            "linear-gradient(107deg, #ff9a60 -11.37%, #062630 61.84%)",
+        },
       },
     },
   },
   plugins: [],
   darkMode: "class",
-}
-export default config
+};
+export default config;
