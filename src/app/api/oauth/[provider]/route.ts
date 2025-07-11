@@ -13,7 +13,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { provider: string } }
 ) {
-  const { provider: rawProvider } = await params
+  const { provider: rawProvider } = params
 
   const code = request.nextUrl.searchParams.get("code")
   const state = request.nextUrl.searchParams.get("state")
