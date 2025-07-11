@@ -1,9 +1,10 @@
-import React from "react";
-import HeroSection2 from "./_components/HeroSection2";
-import FeaturesSection2 from "./_components/FeaturesSection2";
-import CommunitySection from "./_components/CommunitySection";
-import JourneySteps from "./_components/JourneySteps";
-import PricingSection from "./_components/PricingSection";
+import React from "react"
+import HeroSection2 from "./_components/HeroSection2"
+import FeaturesSection2 from "./_components/FeaturesSection2"
+import CommunitySection from "./_components/CommunitySection"
+import JourneySteps from "./_components/JourneySteps"
+import PricingSection from "./_components/PricingSection"
+import TestimonialSection from "./_components/TestimonialSection"
 
 const page = () => {
   return (
@@ -17,10 +18,11 @@ const page = () => {
           <CommunitySection />
           <JourneySteps />
           <PricingSection />
+          <TestimonialSection />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default page;
+export default page

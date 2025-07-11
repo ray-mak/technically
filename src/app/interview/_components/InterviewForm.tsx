@@ -114,17 +114,6 @@ export default function InterviewForm({ userId }: { userId: string }) {
       </div>
 
       <div>
-        <label className="block font-semibold mb-1">Resume (optional) </label>
-        <textarea
-          className="w-full border rounded px-3 py-2"
-          value={formData.resume}
-          onChange={handleChange("resume")}
-          placeholder="Paste your resume here..."
-          rows={6}
-        />
-      </div>
-
-      <div>
         <label className="block font-semibold mb-1">
           Interview Type (required)
         </label>
@@ -156,8 +145,33 @@ export default function InterviewForm({ userId }: { userId: string }) {
           max="15"
         />
       </div>
+
+      <div>
+        <label className="block font-semibold mb-1">
+          Focus Areas / Topics (Optional but Recommended)
+        </label>
+        <textarea
+          className="w-full border rounded px-3 py-2"
+          value={formData.focusAreas}
+          onChange={handleChange("focusAreas")}
+          placeholder="e.g., APIs, System Design, UI Testing"
+          rows={6}
+        />
+      </div>
+
       <div className="py-8">
         <p className="font-semibold text-3xl">Optional Fields</p>
+      </div>
+
+      <div>
+        <label className="block font-semibold mb-1">Resume (optional) </label>
+        <textarea
+          className="w-full border rounded px-3 py-2"
+          value={formData.resume}
+          onChange={handleChange("resume")}
+          placeholder="Paste your resume here..."
+          rows={6}
+        />
       </div>
 
       <div>
@@ -194,16 +208,6 @@ export default function InterviewForm({ userId }: { userId: string }) {
           <option value="challenging">Challenging</option>
           <option value="faang">FAANG-Level</option>
         </select>
-      </div>
-
-      <div>
-        <label className="block font-semibold mb-1">Focus Areas / Topics</label>
-        <input
-          className="w-full border rounded px-3 py-2"
-          value={formData.focusAreas}
-          onChange={handleChange("focusAreas")}
-          placeholder="e.g., APIs, System Design, UI Testing"
-        />
       </div>
 
       <div>

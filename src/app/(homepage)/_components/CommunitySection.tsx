@@ -1,14 +1,13 @@
-import Image from "next/image";
-import React from "react";
+import Image from "next/image"
+import React from "react"
 
 const CommunitySection = () => {
   return (
     <section className="grid gap-10 lg:grid-cols-[auto_1fr] lg:items-center lg:gap-20">
       <div className="grid gap-6 lg:max-w-[34rem]">
-        <h2 className="font-martian-mono text-2xl font-semibold leading-snug tracking-tighter text-neutral-900 md:text-4xl lg:max-w-[34rem]">
-          Not your average book{" "}
+        <h2 className="text-2xl font-bold leading-snug tracking-tighter text-neutral-900 md:text-4xl lg:max-w-[34rem]">
+          More than just data structures and algorithms
           <span className="relative inline-block">
-            <em className="not-italic">club</em>
             {/* <Image
               src="/images/pattern-circle.png"
               alt=""
@@ -18,12 +17,16 @@ const CommunitySection = () => {
             /> */}
           </span>
         </h2>
-        <p>
-          Connect with a community that speaks your language - from{" "}
-          <strong className="font-semibold">Python</strong> to{" "}
-          <strong className="font-semibold">TypeScript</strong> and everything
-          in between. Our discussions blend technical depth with practical
-          applications.
+        <p className="font-inter text-gray-700 dark:text-gray-200">
+          As a front-end or full-stack developer, your strengths go beyond
+          solving abstract puzzles, you build real features, debug tricky UI
+          bugs, and make user experiences shine.
+        </p>
+        <p className="font-inter text-gray-700 dark:text-gray-200">
+          Instead of focusing only on algorithms, we help you sharpen the skills
+          that matter in real jobs: building features, fixing bugs, and
+          practicing interviews that reflect your actual day-to-day as a
+          developer.
         </p>
       </div>
 
@@ -35,7 +38,7 @@ const CommunitySection = () => {
         height={700}
       />
     </section>
-  );
-};
+  )
+}
 
-export default CommunitySection;
+export default CommunitySection

@@ -1,5 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
+import LinkStyled from "./LinkStyled"
 
 export default function HeroSection2() {
   return (
@@ -7,30 +8,30 @@ export default function HeroSection2() {
       <div className="grid gap-8 lg:max-w-[36rem]">
         <div className="grid gap-6">
           <h1 className="bg-gradient-text bg-clip-text font-martian-mono text-3xl font-bold leading-tight tracking-tighter text-transparent md:text-7xl">
-            Join the ultimate tech book club
+            Nail Your Next Tech Interview
           </h1>
-          <p className="font-mono text-lg">
-            Turn your reading time into learning time with fellow tech
-            enthusiasts. Get curated recommendations, join vibrant discussions,
-            and level up your skills one chapter at a time.
+          <p className="font-sans text-lg text-neutral-900 font-semibold">
+            Practice full-stack technical interviews with{" "}
+            <strong>real-world</strong> coding challenges, not brain teasers.
+            Improve your interview process with AI powered mock interviews and
+            feedback.
           </p>
         </div>
 
         <div className="grid max-w-[25rem] gap-5">
-          <Link
+          {/* <Link
             href="/interview"
             className="font-bold mt-8 inline-flex justify-center items-center rounded-lg border-2  px-6 py-5 uppercase border-neutral-900 bg-light-salmon-50 text-neutral-900 outline-neutral-700 hover:from-light-salmon-100 hover:to-light-salmon-50"
           >
             <span>Get Started</span>
-          </Link>
-          {/* <LinkStyled
-            href="#membership-options"
+          </Link> */}
+          <LinkStyled
+            href="/interview"
             theme="primary"
-            className="group"
+            className="group text-lg font-bold"
           >
-            Review Membership Options
-            <ArrowDownIcon className="shrink-0 motion-safe:group-hover:animate-bounce" />
-          </LinkStyled> */}
+            Get Started
+          </LinkStyled>
           {/* 
           <div className="grid grid-cols-[auto_1fr] items-center justify-items-start gap-x-3 gap-y-1">
             <Image src={avatars} alt="" className="row-span-2 max-w-28" />
@@ -50,5 +51,5 @@ export default function HeroSection2() {
         className="rounded-2xl"
       />
     </section>
-  );
+  )
 }

@@ -1,7 +1,7 @@
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "tailwind-merge"
 
-import CheckboxIcon from "./CheckboxIcon";
-import LinkStyled from "./LinkStyled";
+import CheckboxIcon from "./CheckboxIcon"
+import LinkStyled from "./LinkStyled"
 
 export default function PriceCard({
   className,
@@ -10,11 +10,11 @@ export default function PriceCard({
   benefits,
   linkText = "Subscribe Now",
 }: {
-  className?: string;
-  planName: string;
-  price: React.ReactNode;
-  benefits: string[];
-  linkText?: string;
+  className?: string
+  planName: string
+  price: React.ReactNode
+  benefits: string[]
+  linkText?: string
 }) {
   return (
     <div
@@ -24,7 +24,11 @@ export default function PriceCard({
       )}
     >
       <div className="grid gap-6">
-        <h3 className="font-martian-mono text-xl font-semibold leading-tighter tracking-tight text-neutral-900">
+        <h3
+          className={`${
+            planName == "Lifetime" ? "text-4xl" : `text-2xl`
+          } font-bold leading-tighter tracking-tight text-neutral-900`}
+        >
           {planName}
         </h3>
 
@@ -48,5 +52,5 @@ export default function PriceCard({
         {linkText}
       </LinkStyled>
     </div>
-  );
+  )
 }

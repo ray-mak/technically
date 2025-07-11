@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
 const HeroSection = () => {
   return (
@@ -21,7 +21,7 @@ const HeroSection = () => {
           <div>
             <Link
               href="#membership"
-              className=" mt-8 inline-flex items-center gap-4 rounded-lg border-2 border-neutral-900 bg-light-salmon-50 px-6 py-5 uppercase bg-neutral-300 font-bold hover:bg-neutral-400"
+              className=" mt-8 inline-flex items-center gap-4 rounded-lg border-2 border-neutral-900 bg-light-salmon-50 px-6 py-5 uppercase font-bold hover:bg-neutral-400"
             >
               <span>Review membership options </span>
             </Link>
@@ -47,7 +47,7 @@ const HeroSection = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection
